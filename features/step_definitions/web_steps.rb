@@ -127,3 +127,11 @@ end
 When /I click within "([^"]*)"$/ do |selector|
   find(selector).click
 end
+
+When /I click "([^"]*)" dropdown$/ do |selector|
+  find('.goog-flat-menu-button-caption', :text => selector).click
+end
+
+When /I click "([^"]*)" google button$/ do |selector|
+  find('.goog-menuitem-content', :text => selector).click
+end
