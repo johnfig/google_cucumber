@@ -124,6 +124,7 @@ Then /^I should see input-name "(.*?)" with "(.*?)"$/ do |name, value|
   find_xpath("./input[@name='#{name}']").value.should == value
 end
 
+# My Custom Methods
 When /I click within "([^"]*)"$/ do |selector|
   find(selector).click
 end
@@ -134,4 +135,20 @@ end
 
 When /I click "([^"]*)" google button$/ do |selector|
   find('.goog-menuitem-content', :text => selector).click
+end
+
+When /I fill in all these words with "([^"]*)"$/ do |selector|
+  page.fill_in 'as_q', :with => selector
+end
+
+When /I fill in this exact word or phrase with "([^"]*)"$/ do |selector|
+  page.fill_in 'as_epq', :with => selector
+end
+
+Then /^I should see "([^"]*)" page$/ do |url|
+	current_url.should eq url 
+end
+
+When /^I click Search tools$/ do
+  find("#hdtb_tls").click
 end
