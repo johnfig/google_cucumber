@@ -146,9 +146,17 @@ When /I fill in this exact word or phrase with "([^"]*)"$/ do |selector|
 end
 
 Then /^I should see "([^"]*)" page$/ do |url|
-	current_url.should eq url 
+	current_url.should == url
 end
 
 When /^I click Search tools$/ do
   find("#hdtb_tls").click
+end
+
+And /^I click on the second link$/ do
+	page.all('#search a')[2].click
+end
+
+Then /^I should see "(.*?)" result count$/ do |text|
+  find('#resultStats').text.should have_content(text)
 end
